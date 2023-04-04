@@ -89,7 +89,7 @@ require_once('partials/_head.php');
                     </div>
                     <div class="col-md-6">
                       <label>Precio del producto</label>
-                      <input type="text" name="prod_price" class="form-control" value="<?php echo $prod->prod_price; ?>Bs">
+                      <input type="text" name="prod_price" class="form-control" value="<?php echo $prod->prod_price; ?>">
                     </div>
                   </div>
                   <hr>
