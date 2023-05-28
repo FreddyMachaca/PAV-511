@@ -84,7 +84,7 @@ require_once('partials/_head.php');
                       <td><?php echo $prod->prod_name; ?></td>
                       <td><?php echo $prod->prod_price; ?>Bs</td>
                       <td>
-                        <a href="products.php?delete=<?php echo $prod->prod_id; ?>">
+                        <a href="delete_products.php?delete=<?php echo $prod->prod_id; ?>">
                           <button class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                             Borrar
