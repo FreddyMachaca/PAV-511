@@ -1,6 +1,6 @@
 <?php
 //1. Customers
-$query = "SELECT COUNT(*) FROM `rpos_customers` ";
+$query = "SELECT COUNT(*) FROM `rpos_clientes` ";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($customers);

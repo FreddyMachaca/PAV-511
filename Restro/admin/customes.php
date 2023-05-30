@@ -6,7 +6,7 @@ check_login();
 //Delete Staff
 if (isset($_GET['delete'])) {
   $id = $_GET['delete'];
-  $adn = "DELETE FROM  rpos_customers  WHERE  customer_id = ?";
+  $adn = "DELETE FROM  rpos_clientes  WHERE  customer_id = ?";
   $stmt = $mysqli->prepare($adn);
   $stmt->bind_param('s', $id);
   $stmt->execute();
@@ -63,25 +63,25 @@ require_once('partials/_head.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM  rpos_customers  ORDER BY `rpos_customers`.`created_at` DESC ";
+                  $ret = "SELECT * FROM  rpos_clientes  ORDER BY `rpos_clientes`.`created_at` DESC ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
                   while ($cust = $res->fetch_object()) {
                   ?>
                     <tr>
-                      <td><?php echo $cust->customer_name; ?></td>
-                      <td><?php echo $cust->customer_phoneno; ?></td>
-                      <td><?php echo $cust->customer_email; ?></td>
+                      <td><?php echo $cust->cliente_nombre; ?></td>
+                      <td><?php echo $cust->cliente_numero; ?></td>
+                      <td><?php echo $cust->cliente_email; ?></td>
                       <td>
-                        <a href="customes.php?delete=<?php echo $cust->customer_id; ?>">
+                        <a href="delete_customers.php?delete=<?php echo $cust->cliente_id; ?>">
                           <button class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                             Borrar
                           </button>
                         </a>
 
-                        <a href="update_customer.php?update=<?php echo $cust->customer_id; ?>">
+                        <a href="update_customer.php?update=<?php echo $cust->cliente_id; ?>">
                           <button class="btn btn-sm btn-primary">
                             <i class="fas fa-user-edit"></i>
                             Actualizar
