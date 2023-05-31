@@ -5,7 +5,7 @@ include('config/checklogin.php');
 check_login();
 if (isset($_GET['delete'])) {
   $id = intval($_GET['delete']);
-  $adn = "DELETE FROM  rpos_products  WHERE  prod_id = ?";
+  $adn = "DELETE FROM  rpos_productos  WHERE  prod_id = ?";
   $stmt = $mysqli->prepare($adn);
   $stmt->bind_param('s', $id);
   $stmt->execute();
@@ -63,7 +63,7 @@ require_once('partials/_head.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM  rpos_products ";
+                  $ret = "SELECT * FROM  rpos_productos ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
@@ -81,8 +81,8 @@ require_once('partials/_head.php');
                         ?>
                       </td>
                       <td><?php echo $prod->prod_code; ?></td>
-                      <td><?php echo $prod->prod_name; ?></td>
-                      <td><?php echo $prod->prod_price; ?>Bs</td>
+                      <td><?php echo $prod->prod_nombre; ?></td>
+                      <td><?php echo $prod->prod_precio; ?>Bs</td>
                       <td>
                         <a href="delete_products.php?delete=<?php echo $prod->prod_id; ?>">
                           <button class="btn btn-sm btn-danger">

@@ -9,7 +9,7 @@ if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
 
     // Delete the product from the database
-    $deleteQuery = "DELETE FROM rpos_products WHERE prod_id = ?";
+    $deleteQuery = "DELETE FROM rpos_productos WHERE prod_id = ?";
     $deleteStmt = $mysqli->prepare($deleteQuery);
     $deleteStmt->bind_param('s', $delete);
     $deleteStmt->execute();

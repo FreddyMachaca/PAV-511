@@ -16,7 +16,7 @@ $stmt->fetch();
 $stmt->close();
 
 //3. Orders
-$query = "SELECT COUNT(*) FROM `rpos_products` ";
+$query = "SELECT COUNT(*) FROM `rpos_productos` ";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($products);

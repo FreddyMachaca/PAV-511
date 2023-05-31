@@ -12,17 +12,17 @@ if (isset($_POST['UpdateProduct'])) {
   } else {
     $update = $_GET['update'];
     $prod_code  = $_POST['prod_code'];
-    $prod_name = $_POST['prod_name'];
+    $prod_nombre = $_POST['prod_name'];
     $prod_img = $_FILES['prod_img']['name'];
     move_uploaded_file($_FILES["prod_img"]["tmp_name"], "assets/img/products/" . $_FILES["prod_img"]["name"]);
     $prod_desc = $_POST['prod_desc'];
-    $prod_price = $_POST['prod_price'];
+    $prod_precio = $_POST['prod_price'];
 
     //Insert Captured information to a database table
-    $postQuery = "UPDATE rpos_products SET prod_code =?, prod_name =?, prod_img =?, prod_desc =?, prod_price =? WHERE prod_id = ?";
+    $postQuery = "UPDATE rpos_productos SET prod_code =?, prod_nombre =?, prod_img =?, prod_desc =?, prod_precio =? WHERE prod_id = ?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
-    $rc = $postStmt->bind_param('ssssss', $prod_code, $prod_name, $prod_img, $prod_desc, $prod_price, $update);
+    $rc = $postStmt->bind_param('ssssss', $prod_code, $prod_nombre, $prod_img, $prod_desc, $prod_precio, $update);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
@@ -46,7 +46,7 @@ require_once('partials/_head.php');
     <?php
     require_once('partials/_topnav.php');
     $update = $_GET['update'];
-    $ret = "SELECT * FROM  rpos_products WHERE prod_id = '$update' ";
+    $ret = "SELECT * FROM  rpos_productos WHERE prod_id = '$update' ";
     $stmt = $mysqli->prepare($ret);
     $stmt->execute();
     $res = $stmt->get_result();
@@ -74,7 +74,7 @@ require_once('partials/_head.php');
                   <div class="form-row">
                     <div class="col-md-6">
                       <label>nombre del producto</label>
-                      <input type="text" value="<?php echo $prod->prod_name; ?>" name="prod_name" class="form-control">
+                      <input type="text" value="<?php echo $prod->prod_nombre; ?>" name="prod_name" class="form-control">
                     </div>
                     <div class="col-md-6">
                       <label>Código de producto</label>
@@ -89,7 +89,7 @@ require_once('partials/_head.php');
                     </div>
                     <div class="col-md-6">
                       <label>Precio del producto</label>
-                      <input type="text" name="prod_price" class="form-control" value="<?php echo $prod->prod_price; ?>">
+                      <input type="text" name="prod_price" class="form-control" value="<?php echo $prod->prod_precio; ?>">
                     </div>
                   </div>
                   <hr>
