@@ -19,14 +19,14 @@ if (isset($_POST['addProduct'])) {
     $prod_price = $_POST['prod_price'];
 	
     //Insert Captured information to a database table
-    $postQuery = "INSERT INTO rpos_products (prod_id, prod_code, prod_name, prod_img, prod_desc, prod_price ) VALUES(?,?,?,?,?,?)";
+    $postQuery = "INSERT INTO rpos_productos (prod_id, prod_code, prod_nombre, prod_img, prod_desc, prod_precio ) VALUES(?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssss', $prod_id, $prod_code, $prod_name, $prod_img, $prod_desc, $prod_price);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
-      $success = "Product Added" && header("refresh:1; url=add_product.php");
+      $success = "Product Added" && header("Location: products.php");
     } else {
       $err = "Please Try Again Or Try Later";
     }

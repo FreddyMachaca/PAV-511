@@ -18,7 +18,7 @@ if (isset($_POST['addCustomer'])) {
     $customer_id = $_POST['customer_id'];
 
     //Insert Captured information to a database table
-    $postQuery = "INSERT INTO rpos_customers (customer_id, customer_name, customer_phoneno, customer_email, customer_password) VALUES(?,?,?,?,?)";
+    $postQuery = "INSERT INTO rpos_clientes (cliente_id, cliente_nombre, cliente_numero, cliente_email, cliente_password) VALUES(?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('sssss', $customer_id, $customer_name, $customer_phoneno, $customer_email, $customer_password);
@@ -27,7 +27,7 @@ if (isset($_POST['addCustomer'])) {
     if ($postStmt) {
       $success = "Customer Added" && header("refresh:1; url=customes.php");
     } else {
-      $err = "Please Try Again Or Try Later";
+      $err = "Inténtelo de nuevo o inténtelo más tarde";
     }
   }
 }

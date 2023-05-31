@@ -11,17 +11,17 @@ if (isset($_POST['updateCustomer'])) {
   if (empty($_POST["customer_phoneno"]) || empty($_POST["customer_name"]) || empty($_POST['customer_email']) || empty($_POST['customer_password'])) {
     $err = "Blank Values Not Accepted";
   } else {
-    $customer_name = $_POST['customer_name'];
-    $customer_phoneno = $_POST['customer_phoneno'];
-    $customer_email = $_POST['customer_email'];
-    $customer_password = sha1(md5($_POST['customer_password'])); //Hash This 
+    $cliente_nombre = $_POST['customer_name'];
+    $cliente_numero = $_POST['customer_phoneno'];
+    $cliente_email = $_POST['customer_email'];
+    $cliente_password = sha1(md5($_POST['customer_password'])); //Hash This
     $update = $_GET['update'];
 
     //Insert Captured information to a database table
-    $postQuery = "UPDATE rpos_customers SET customer_name =?, customer_phoneno =?, customer_email =?, customer_password =? WHERE  customer_id =?";
+    $postQuery = "UPDATE rpos_clientes SET cliente_nombre =?, cliente_numero =?, cliente_email =?, cliente_password =? WHERE  cliente_id =?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
-    $rc = $postStmt->bind_param('sssss', $customer_name, $customer_phoneno, $customer_email, $customer_password, $update);
+    $rc = $postStmt->bind_param('sssss', $cliente_nombre, $cliente_numero, $cliente_email, $cliente_password, $update);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
@@ -45,7 +45,7 @@ require_once('partials/_head.php');
     <?php
     require_once('partials/_topnav.php');
     $update = $_GET['update'];
-    $ret = "SELECT * FROM  rpos_customers WHERE customer_id = '$update' ";
+    $ret = "SELECT * FROM  rpos_clientes WHERE cliente_id = '$update' ";
     $stmt = $mysqli->prepare($ret);
     $stmt->execute();
     $res = $stmt->get_result();
@@ -73,18 +73,18 @@ require_once('partials/_head.php');
                   <div class="form-row">
                     <div class="col-md-6">
                       <label>Nombre del cliente</label>
-                      <input type="text" name="customer_name" value="<?php echo $cust->customer_name; ?>" class="form-control">
+                      <input type="text" name="customer_name" value="<?php echo $cust->cliente_nombre; ?>" class="form-control">
                     </div>
                     <div class="col-md-6">
                       <label>Número de teléfono del cliente</label>
-                      <input type="text" name="customer_phoneno" value="<?php echo $cust->customer_phoneno; ?>" class="form-control" value="">
+                      <input type="text" name="customer_phoneno" value="<?php echo $cust->cliente_numero; ?>" class="form-control" value="">
                     </div>
                   </div>
                   <hr>
                   <div class="form-row">
                     <div class="col-md-6">
                       <label>Correo electrónico del cliente</label>
-                      <input type="email" name="customer_email" value="<?php echo $cust->customer_email; ?>" class="form-control" value="">
+                      <input type="email" name="customer_email" value="<?php echo $cust->cliente_email; ?>" class="form-control" value="">
                     </div>
                     <div class="col-md-6">
                       <label>Contraseña del cliente</label>
