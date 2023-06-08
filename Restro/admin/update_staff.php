@@ -18,7 +18,7 @@ if (isset($_POST['UpdateStaff'])) {
     $update = $_GET['update'];
 
     //Insert Captured information to a database table
-    $postQuery = "UPDATE rpos_staff SET  staff_number =?, staff_name =?, staff_email =?, staff_password =? WHERE staff_id =?";
+    $postQuery = "UPDATE rpos_personal SET  personal_num =?, personal_nombre =?, personal_email =?, personal_password =? WHERE personal_id =?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssi', $staff_number, $staff_name, $staff_email, $staff_password, $update);
@@ -45,7 +45,7 @@ require_once('partials/_head.php');
     <?php
     require_once('partials/_topnav.php');
     $update = $_GET['update'];
-    $ret = "SELECT * FROM  rpos_staff WHERE staff_id = '$update' ";
+    $ret = "SELECT * FROM  rpos_personal WHERE personal_id = '$update' ";
     $stmt = $mysqli->prepare($ret);
     $stmt->execute();
     $res = $stmt->get_result();
@@ -73,18 +73,18 @@ require_once('partials/_head.php');
                   <div class="form-row">
                     <div class="col-md-6">
                       <label>Numero de personal</label>
-                      <input type="text" name="staff_number" class="form-control" value="<?php echo $staff->staff_number; ?>">
+                      <input type="text" name="staff_number" class="form-control" value="<?php echo $staff->personal_num; ?>">
                     </div>
                     <div class="col-md-6">
                       <label>Nombre del personal</label>
-                      <input type="text" name="staff_name" class="form-control" value="<?php echo $staff->staff_name; ?>">
+                      <input type="text" name="staff_name" class="form-control" value="<?php echo $staff->personal_nombre; ?>">
                     </div>
                   </div>
 
                   <div class="form-row">
                     <div class="col-md-6">
                       <label>Correo electrónico del personal</label>
-                      <input type="email" name="staff_email" class="form-control" value="<?php echo $staff->staff_email; ?>">
+                      <input type="email" name="staff_email" class="form-control" value="<?php echo $staff->personal_email; ?>">
                     </div>
                     <div class="col-md-6">
                       <label>Contraseña del personal</label>
