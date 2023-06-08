@@ -23,7 +23,7 @@ $stmt->bind_result($products);
 $stmt->fetch();
 $stmt->close();
 
-//4.Sales
+//4.Sales, area de pagos en rpos_pagos
 $query = "SELECT SUM(pago_monto) FROM `rpos_pagos` ";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
