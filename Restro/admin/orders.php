@@ -48,7 +48,7 @@ require_once('partials/_head.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM  rpos_products ";
+                  $ret = "SELECT * FROM  rpos_productos ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
@@ -66,10 +66,10 @@ require_once('partials/_head.php');
                         ?>
                       </td>
                       <td><?php echo $prod->prod_code; ?></td>
-                      <td><?php echo $prod->prod_name; ?></td>
-                      <td><?php echo $prod->prod_price; ?>Bs</td>
+                      <td><?php echo $prod->prod_nombre; ?></td>
+                      <td><?php echo $prod->prod_precio; ?>Bs</td>
                       <td>
-                        <a href="make_oder.php?prod_id=<?php echo $prod->prod_id; ?>&prod_name=<?php echo $prod->prod_name; ?>&prod_price=<?php echo $prod->prod_price; ?>">
+                        <a href="make_oder.php?prod_id=<?php echo $prod->prod_id; ?>&prod_name=<?php echo $prod->prod_nombre; ?>&prod_price=<?php echo $prod->prod_precio; ?>">
                           <button class="btn btn-sm btn-warning">
                             <i class="fas fa-cart-plus"></i>
                             Realizar Pedido
