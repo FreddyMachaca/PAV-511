@@ -186,7 +186,7 @@ require_once('partials/_analytics.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM   rpos_payments   ORDER BY `rpos_payments`.`created_at` DESC LIMIT 7 ";
+                  $ret = "SELECT * FROM   rpos_pagos   ORDER BY `rpos_pagos`.`created_at` DESC LIMIT 7 ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
@@ -194,13 +194,13 @@ require_once('partials/_analytics.php');
                   ?>
                     <tr>
                       <th class="text-success" scope="row">
-                        <?php echo $payment->pay_code; ?>
+                        <?php echo $payment->pago_code; ?>
                       </th>
                       <td>
-                        <?php echo $payment->pay_amt; ?>Bs
+                        <?php echo $payment->pago_monto; ?>Bs
                       </td>
                       <td class='text-success'>
-                        <?php echo $payment->order_code; ?>
+                        <?php echo $payment->pedido_code; ?>
                       </td>
                     </tr>
                   <?php } ?>

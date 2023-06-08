@@ -6,7 +6,7 @@ check_login();
 //Cancel Order
 if (isset($_GET['cancel'])) {
     $id = $_GET['cancel'];
-    $adn = "DELETE FROM  rpos_pedidos  WHERE  order_id = ?";
+    $adn = "DELETE FROM  rpos_pedidos  WHERE  pedido_id = ?";
     $stmt = $mysqli->prepare($adn);
     $stmt->bind_param('s', $id);
     $stmt->execute();
