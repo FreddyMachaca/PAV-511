@@ -6,7 +6,7 @@ check_login();
 //Delete Staff
 if (isset($_GET['delete'])) {
   $id = intval($_GET['delete']);
-  $adn = "DELETE FROM  rpos_staff  WHERE  staff_id = ?";
+  $adn = "DELETE FROM  rpos_personal  WHERE  personal_id = ?";
   $stmt = $mysqli->prepare($adn);
   $stmt->bind_param('i', $id);
   $stmt->execute();
@@ -60,25 +60,25 @@ require_once('partials/_head.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM  rpos_staff ";
+                  $ret = "SELECT * FROM  rpos_personal ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
                   while ($staff = $res->fetch_object()) {
                   ?>
                     <tr>
-                      <td><?php echo $staff->staff_number; ?></td>
-                      <td><?php echo $staff->staff_name; ?></td>
-                      <td><?php echo $staff->staff_email; ?></td>
+                      <td><?php echo $staff->personal_num; ?></td>
+                      <td><?php echo $staff->personal_nombre; ?></td>
+                      <td><?php echo $staff->personal_email; ?></td>
                       <td>
-                        <a href="hrm.php?delete=<?php echo $staff->staff_id; ?>">
+                        <a href="hrm.php?delete=<?php echo $staff->personal_id; ?>">
                           <button class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                             Borrar
                           </button>
                         </a>
 
-                        <a href="update_staff.php?update=<?php echo $staff->staff_id; ?>">
+                        <a href="update_staff.php?update=<?php echo $staff->personal_id; ?>">
                           <button class="btn btn-sm btn-primary">
                             <i class="fas fa-user-edit"></i>
                             Actualizar
