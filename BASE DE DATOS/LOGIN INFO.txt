@@ -4,8 +4,8 @@ USAR PHP Version 7.4
 
 ---Admin Login---
 
-Email	: admin@mail.com
-Password: codeastro.com
+Email	: admin@gmail.com
+Password: admin
 
 --Cajero Login--
 
