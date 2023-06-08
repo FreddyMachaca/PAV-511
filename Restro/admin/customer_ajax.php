@@ -9,7 +9,7 @@ if (!empty($_POST["custName"])) {
 <?php
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
-<?php echo htmlentities($row['customer_id']); ?>
+<?php echo htmlentities($row['cliente_id']); ?>
 <?php
     }
 }

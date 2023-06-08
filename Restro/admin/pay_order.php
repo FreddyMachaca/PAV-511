@@ -24,7 +24,7 @@ if (isset($_POST['pay'])) {
 
     //Insert Captured information to a database table
     $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
-    $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
+    $upQry = "UPDATE rpos_pedidos SET pedido_status =? WHERE pedido_code =?";
 
     $postStmt = $mysqli->prepare($postQuery);
     $upStmt = $mysqli->prepare($upQry);
@@ -57,12 +57,12 @@ require_once('partials/_head.php');
     <?php
     require_once('partials/_topnav.php');
     $order_code = $_GET['order_code'];
-    $ret = "SELECT * FROM  rpos_orders WHERE order_code ='$order_code' ";
+    $ret = "SELECT * FROM  rpos_pedidos WHERE pedido_code ='$order_code' ";
     $stmt = $mysqli->prepare($ret);
     $stmt->execute();
     $res = $stmt->get_result();
     while ($order = $res->fetch_object()) {
-        $total = ($order->prod_price * $order->prod_qty);
+        $total = ($order->prod_precio * $order->prod_cant);
 
     ?>
     

@@ -50,24 +50,24 @@ require_once('partials/_head.php');
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $ret = "SELECT * FROM  rpos_orders WHERE order_status = 'PAGADO' ORDER BY `rpos_orders`.`created_at` DESC  ";
+                                    $ret = "SELECT * FROM  rpos_pedidos WHERE pedido_status = 'PAGADO' ORDER BY `rpos_pedidos`.`created_at` DESC  ";
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
                                     $res = $stmt->get_result();
                                     while ($order = $res->fetch_object()) {
-                                        $total = ($order->prod_price * $order->prod_qty);
+                                        $total = ($order->prod_precio * $order->prod_cant);
 
                                     ?>
                                         <tr>
-                                            <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
-                                            <td><?php echo $order->customer_name; ?></td>
-                                            <td class="text-success"><?php echo $order->prod_name; ?></td>
-                                            <td><?php echo $order->prod_price; ?>Bs</td>
-                                            <td class="text-success"><?php echo $order->prod_qty; ?></td>
+                                            <th class="text-success" scope="row"><?php echo $order->pedido_code; ?></th>
+                                            <td><?php echo $order->cliente_nombre; ?></td>
+                                            <td class="text-success"><?php echo $order->prod_nombre; ?></td>
+                                            <td><?php echo $order->prod_precio; ?>Bs</td>
+                                            <td class="text-success"><?php echo $order->prod_cant; ?></td>
                                             <td><?php echo $total; ?>Bs</td>
                                             <td><?php echo date('d/M/Y g:i', strtotime($order->created_at)); ?></td>
                                             <td>
-                                                <a target="_blank" href="print_receipt.php?order_code=<?php echo $order->order_code; ?>">
+                                                <a target="_blank" href="print_receipt.php?order_code=<?php echo $order->pedido_code; ?>">
                                                     <button class="btn btn-sm btn-primary">
                                                         <i class="fas fa-print"></i>
                                                         Imprimir recibo
