@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2023 a las 17:08:17
+-- Tiempo de generación: 19-06-2023 a las 03:35:42
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -39,7 +39,7 @@ CREATE TABLE `rpos_admin` (
 --
 
 INSERT INTO `rpos_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
-('10e0b6dc958adfb5b094d8935a13aeadbe783c25', 'Usuario Admin', 'admin@mail.com', '903b21879b4a60fc9103c3334e4f6f62cf6c3a2d');
+('10e0b6dc958adfb5b094d8935a13aeadbe783c25', 'Usuario Admin', 'admin@gmail.com', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad');
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,6 @@ INSERT INTO `rpos_pedidos` (`pedido_id`, `pedido_code`, `cliente_id`, `cliente_n
 ('019661e097', 'AEHM-0653', '06549ea58afd', 'Ana J. Browne', 'bd200ef837', 'Turkish Coffee', '8', '1', 'Pagado', '2023-04-01 05:41:11.397528'),
 ('06016e811d', 'MEJH-5894', '9a030bf80299', 'Orivaldo', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-02 00:50:48.835221'),
 ('0c2824564e', 'KIZE-7568', '9a030bf80299', 'Orivaldo', '8dd1968370', 'Sajta', '10', '2', '', '2023-04-01 08:32:09.870642'),
-('3d69a6a6ca', 'AMKP-4189', '2541dba91915', 'ori ani ani', '2b976e49a0', 'Cheeseburger xxz', '5', '5', 'PAGADO', '2023-06-08 12:35:40.024038'),
 ('49b5b020ab', 'GHUI-7389', '9a030bf80299', 'Orivaldo', 'e769e274a3', 'Frappuccino', '3', '2', 'PAGADO', '2023-04-01 08:28:43.548292'),
 ('49c1bd8086', 'IUSP-9453', 'fe6bb69bdd29', 'Brian S. Boucher', 'd57cd89073', 'Country Fried Steak', '10', '1', 'Pagado', '2023-04-01 05:41:11.405635'),
 ('5ad28fe4ea', 'UKJA-6302', '29c759d624f9', 'Trina L. Crowder', 'bd200ef837', 'Turkish Coffee', '8', '1', 'PAGADO', '2023-04-01 08:17:12.053002'),
@@ -189,15 +188,12 @@ INSERT INTO `rpos_pedidos` (`pedido_id`, `pedido_code`, `cliente_id`, `cliente_n
 ('80ab270866', 'JFMB-0731', '35135b319ce3', 'Christine Moore', '97972e8d63', 'Irish Coffee', '11', '1', 'Pagado', '2023-04-01 05:41:11.319361'),
 ('8243601584', 'YTOR-1736', '9a030bf80299', 'Orivaldo', '97972e8d63', 'Irish Coffee', '11', '1', 'PAGADO', '2023-04-02 00:46:11.864854'),
 ('83a2493f07', 'ITBW-1576', '3859d26cd9a5', 'Louise R. Holloman', '8dd1968370', 'Sajta', '10', '2', 'PAGADO', '2023-04-01 08:18:53.332388'),
-('8815e7edfc', 'QOEH-8613', '29c759d624f9', 'Trina L. Crowder', '2b976e49a0', 'Cheeseburger', '3', '3', 'Pagado', '2023-04-01 05:41:11.334211'),
 ('af52d0022d', 'FNAB-9142', '35135b319ce3', 'Christine Moore', '2fdec9bdfb', 'Jambalaya', '9', '2', 'Pagado', '2023-04-01 05:41:11.389650'),
 ('c7e3262ad1', 'GUFC-9526', 'fe6bb69bdd29', 'Brian S. Boucher', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-01 08:15:47.626996'),
 ('cd461e888f', 'YGQJ-8391', '29c759d624f9', 'Trina L. Crowder', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-01 08:13:27.044680'),
-('e615a65f86', 'YXTZ-5987', '2541dba91915', 'ori ani', '2b976e49a0', 'Cheeseburger xxz', '5', '5', 'PAGADO', '2023-06-08 15:03:12.188956'),
 ('ebe4cecdaa', 'DVXI-2941', '9a030bf80299', 'Orivaldo', '8dd1968370', 'Sajta', '10', '2', 'PAGADO', '2023-04-01 08:29:55.631932'),
 ('f961eedc5e', 'NASI-4592', 'b8761964a422', 'Daniel', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-02 01:39:19.017594'),
-('fc79a55455', 'INHG-0875', '9c7fcc067bda', 'Delbert G. Campbell', '3adfdee116', 'Enchiladas', '10', '1', 'Pagado', '2023-04-01 05:41:11.364681'),
-('ff47b6fd42', 'VFBO-8152', '2541dba91915', 'ori ani ani', '2b976e49a0', 'Cheeseburger xxz', '5', '2', 'PAGADO', '2023-06-08 12:04:06.834545');
+('fc79a55455', 'INHG-0875', '9c7fcc067bda', 'Delbert G. Campbell', '3adfdee116', 'Enchiladas', '10', '1', 'Pagado', '2023-04-01 05:41:11.364681');
 
 -- --------------------------------------------------------
 
@@ -211,15 +207,23 @@ CREATE TABLE `rpos_personal` (
   `personal_num` varchar(200) NOT NULL,
   `personal_email` varchar(200) NOT NULL,
   `personal_password` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `personal_direccion` varchar(200) NOT NULL,
+  `personal_telefono` varchar(200) NOT NULL,
+  `personal_puesto` varchar(200) NOT NULL,
+  `personal_fecha_nacimiento` varchar(200) NOT NULL,
+  `personal_ci` varchar(200) NOT NULL,
+  `personal_salario_hora` varchar(200) NOT NULL,
+  `personal_datos_bancarios` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `rpos_personal`
 --
 
-INSERT INTO `rpos_personal` (`personal_id`, `personal_nombre`, `personal_num`, `personal_email`, `personal_password`, `created_at`) VALUES
-(3, 'Cajero Zeballo', 'VDKO-8237', 'zeballos6@gmail.com', '3ad7c50b93459e46c2494a7fb957e63380326270', '2023-04-02 01:36:49.033726');
+INSERT INTO `rpos_personal` (`personal_id`, `personal_nombre`, `personal_num`, `personal_email`, `personal_password`, `created_at`, `personal_direccion`, `personal_telefono`, `personal_puesto`, `personal_fecha_nacimiento`, `personal_ci`, `personal_salario_hora`, `personal_datos_bancarios`) VALUES
+(3, 'Cajero Zeballo', 'VDKO-8237', 'zeballos6@gmail.com', 'zeballos', '2023-06-19 01:34:44.173327', 'agua viva', '78674523', 'Cajero', '23/02/2003', '8906527', '23BS', '234354'),
+(6, 'Ademar Casas', 'XWKN-8135', 'ademarCasas@gmail.com', 'ademar', '2023-06-19 01:27:27.584372', 'mirapiranga', '6352382', 'Cajero', '23/05/2001', '8901534LP', '20bs', 'Inf. 123');
 
 -- --------------------------------------------------------
 
@@ -242,7 +246,6 @@ CREATE TABLE `rpos_productos` (
 --
 
 INSERT INTO `rpos_productos` (`prod_id`, `prod_code`, `prod_nombre`, `prod_img`, `prod_desc`, `prod_precio`, `created_at`) VALUES
-('2b976e49a0', 'CEWV-9438', 'Cheeseburger xxz', '', 'A cheeseburger is a hamburger topped with cheese. Traditionally, the slice of cheese is placed on top of the meat patty. The cheese is usually added to the cooking hamburger patty shortly before serving, which allows the cheese to melt. Cheeseburgers can include variations in structure, ingredients and composition.', '5', '2023-05-31 02:31:56.054246'),
 ('2fdec9bdfb', 'UJAK-9614', 'Jambalaya', 'Jambalaya.jpg', 'Jambalaya is an American Creole and Cajun rice dish of French, African, and Spanish influence, consisting mainly of meat and vegetables mixed with rice.', '9', '2022-09-03 10:48:49.593618'),
 ('31dfcc94cf', 'SYQP-3710', 'Buffalo Wings', 'buffalo_wings.jpg', 'A Buffalo wing in American cuisine is an unbreaded chicken wing section that is generally deep-fried and then coated or dipped in a sauce consisting of a vinegar-based cayenne pepper hot sauce and melted butter prior to serving.', '11', '2022-09-03 10:51:09.829079'),
 ('3adfdee116', 'HIPF-5346', 'Enchiladas', 'enchiladas.jpg', 'An enchilada is a corn tortilla rolled around a filling and covered with a savory sauce. Originally from Mexican cuisine, enchiladas can be filled with various ingredients, including meats, cheese, beans, potatoes, vegetables, or combinations', '10', '2022-09-03 12:52:26.427554'),
@@ -324,7 +327,7 @@ ALTER TABLE `rpos_pass_resets`
 -- AUTO_INCREMENT de la tabla `rpos_personal`
 --
 ALTER TABLE `rpos_personal`
-  MODIFY `personal_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `personal_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
