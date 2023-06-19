@@ -110,7 +110,7 @@ require_once('partials/_sidebar.php');
                             <br>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <input type="submit" name="pay" value="Pay Order" class="btn btn-success" value="">
+                                    <input type="submit" name="pay" value="Pagar pedido" class="btn btn-success" value="">
                                 </div>
                             </div>
                         </form>

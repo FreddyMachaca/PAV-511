@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2023 a las 03:35:42
+-- Tiempo de generación: 19-06-2023 a las 05:42:38
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -53,26 +53,29 @@ CREATE TABLE `rpos_clientes` (
   `cliente_numero` varchar(200) NOT NULL,
   `cliente_email` varchar(200) NOT NULL,
   `cliente_password` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `cliente_direccion` varchar(200) NOT NULL,
+  `cliente_restricciones_dieteticas` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `rpos_clientes`
 --
 
-INSERT INTO `rpos_clientes` (`cliente_id`, `cliente_nombre`, `cliente_numero`, `cliente_email`, `cliente_password`, `created_at`) VALUES
-('06549ea58afd', 'Ana J. Browne', '4589698780', 'anaj@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:48.523820'),
-('2541dba91915', 'ori ani', '234342', 'ori@h.com', 'adcd7048512e64b48da55b027577886ee5a36350', '2023-06-08 15:02:03.687155'),
-('29c759d624f9', 'Trina L. Crowder', '5896321002', 'trina@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 13:16:18.927595'),
-('35135b319ce3', 'Christine Moore', '7412569698', 'christine@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-04 16:29:45.133297'),
-('3859d26cd9a5', 'Louise R. Holloman', '7856321000', 'holloman@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:12.149280'),
-('7c8f2100d552', 'Melody E. Hance', '3210145550', 'melody@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:23.996068'),
-('96b50844242f', 'Compartida', '78564445', 'cuentacompartida700@gmail.com', 'a346bc80408d9b2a5063fd1bddb20e2d5586ec30', '2023-04-01 22:47:14.296527'),
-('9a030bf80299', 'Orivaldo', '78564445', 'orivaldo@gmail.com', 'e1009603edd48eee0e3cbd22a0095b8a164b3599', '2023-04-01 08:24:41.189516'),
-('9c7fcc067bda', 'Delbert G. Campbell', '7850001256', 'delbert@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:56.944364'),
-('9f6378b79283', 'William C. Gallup', '7145665870', 'william@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:26.507932'),
-('b8761964a422', 'Daniel z', '34546', 'daniel@gmail.com', 'adcd7048512e64b48da55b027577886ee5a36350', '2023-06-08 15:02:18.374481'),
-('fe6bb69bdd29', 'Brian S. Boucher', '1020302055', 'brians@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:29.591980');
+INSERT INTO `rpos_clientes` (`cliente_id`, `cliente_nombre`, `cliente_numero`, `cliente_email`, `cliente_password`, `created_at`, `cliente_direccion`, `cliente_restricciones_dieteticas`) VALUES
+('06549ea58afd', 'Ana J. Browne', '4589698780', 'anaj@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:48.523820', '', NULL),
+('2541dba91915', 'ori ani', '234342', 'ori@h.com', 'adcd7048512e64b48da55b027577886ee5a36350', '2023-06-08 15:02:03.687155', '', NULL),
+('29c759d624f9', 'Trina L. Crowder', '5896321002', 'trina@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 13:16:18.927595', '', NULL),
+('35135b319ce3', 'Christine Moore', '7412569698', 'christine@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-04 16:29:45.133297', '', NULL),
+('3859d26cd9a5', 'Louise R. Holloman', '7856321000', 'holloman@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:12.149280', '', NULL),
+('7c8f2100d552', 'Melody E. Hance', '3210145550', 'melody@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:23.996068', '', NULL),
+('96b50844242f', 'Compartida', '78564445', 'cuentacompartida700@gmail.com', 'a346bc80408d9b2a5063fd1bddb20e2d5586ec30', '2023-04-01 22:47:14.296527', '', NULL),
+('9a030bf80299', 'Orivaldo', '78564445', 'orivaldo@gmail.com', 'e1009603edd48eee0e3cbd22a0095b8a164b3599', '2023-04-01 08:24:41.189516', '', NULL),
+('9c7fcc067bda', 'Delbert G. Campbell', '7850001256', 'delbert@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:56.944364', '', NULL),
+('9f6378b79283', 'William C. Gallup', '7145665870', 'william@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:26.507932', '', NULL),
+('b8761964a422', 'Daniel z', '34546', 'daniel@gmail.com', 'd3232aa5222d3f0ac68819cddd15c4218a611d18', '2023-06-19 03:33:14.996420', 'calle Bahia ', 'No consume Aji'),
+('be997cd5ad12', 'Abraham', '23432141', 'abraham@gmail.com', '84128e45574217e288fb23f58ae4b5bdb7463ee2', '2023-06-19 03:31:01.637123', 'calle pascoe', 'no tiene'),
+('fe6bb69bdd29', 'Brian S. Boucher', '1020302055', 'brians@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:29.591980', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -105,6 +108,7 @@ INSERT INTO `rpos_pagos` (`pago_id`, `pago_code`, `pedido_code`, `cliente_id`, `
 ('352b45', 'AELFI18QU4', 'UKJA-6302', '29c759d624f9', '8', 'Dinero', '2023-04-01 09:08:49.460529'),
 ('4423d7', 'QWERT0YUZ1', 'JFMB-0731', '35135b319ce3', '11', 'Dinero', '2023-04-01 09:08:49.479292'),
 ('442865', '146XLFSC9V', 'INHG-0875', '9c7fcc067bda', '10', 'Dinero', '2023-04-01 09:08:49.434592'),
+('4cf83b', '5L6HG1PQR8', 'KHRM-6279', 'be997cd5ad12', '18', 'Dinero', '2023-06-19 03:34:49.310464'),
 ('60193f', 'JATMX1YCL2', 'PGAS-9485', 'e711dcc579d9', '6', 'Dinero', '2023-04-01 09:08:49.450731'),
 ('65891b', 'MF2TVJA1PY', 'ZPXD-6951', 'e711dcc579d9', '16', 'Dinero', '2023-04-01 09:08:49.413907'),
 ('74afe3', 'ZB79X5UQ2J', 'YXTZ-5987', '2541dba91915', '25', 'Dinero', '2023-06-08 15:03:12.111492'),
@@ -114,6 +118,7 @@ INSERT INTO `rpos_pagos` (`pago_id`, `pago_code`, `pedido_code`, `cliente_id`, `
 ('7dd904', 'NZF1HS37TM', 'PTHY-7841', '06549ea58afd', '7', 'Dinero', '2023-04-01 09:08:49.407622'),
 ('7ddc2e', 'I9DGL3HU8X', 'VFBO-8152', '2541dba91915', '10', 'Dinero', '2023-06-08 12:04:06.779411'),
 ('7e1989', 'KLTF3YZHJP', 'QOEH-8613', '29c759d624f9', '9', 'Dinero', '2023-04-01 09:08:49.424370'),
+('854bee', 'NH7WOJMZX4', 'UCFE-9213', 'be997cd5ad12', '18', 'Paypal', '2023-06-19 03:36:00.341999'),
 ('8f44de', '5SQ4VLKRM7', 'MBXY-2845', '06549ea58afd', '7', 'Dinero', '2023-04-01 07:42:08.946526'),
 ('968488', '5E31DQ2NCG', 'COXP-6018', '7c8f2100d552', '22', 'Dinero', '2023-04-01 09:08:49.455921'),
 ('984539', 'LSBNK1WRFU', 'FNAB-9142', '35135b319ce3', '18', 'Paypal', '2022-09-04 16:32:14.852482'),
@@ -179,6 +184,7 @@ INSERT INTO `rpos_pedidos` (`pedido_id`, `pedido_code`, `cliente_id`, `cliente_n
 ('019661e097', 'AEHM-0653', '06549ea58afd', 'Ana J. Browne', 'bd200ef837', 'Turkish Coffee', '8', '1', 'Pagado', '2023-04-01 05:41:11.397528'),
 ('06016e811d', 'MEJH-5894', '9a030bf80299', 'Orivaldo', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-02 00:50:48.835221'),
 ('0c2824564e', 'KIZE-7568', '9a030bf80299', 'Orivaldo', '8dd1968370', 'Sajta', '10', '2', '', '2023-04-01 08:32:09.870642'),
+('3eb1336891', 'KHRM-6279', 'be997cd5ad12', 'Abraham', '2fdec9bdfb', 'Jambalaya', '9', '2', 'PAGADO', '2023-06-19 03:34:49.356336'),
 ('49b5b020ab', 'GHUI-7389', '9a030bf80299', 'Orivaldo', 'e769e274a3', 'Frappuccino', '3', '2', 'PAGADO', '2023-04-01 08:28:43.548292'),
 ('49c1bd8086', 'IUSP-9453', 'fe6bb69bdd29', 'Brian S. Boucher', 'd57cd89073', 'Country Fried Steak', '10', '1', 'Pagado', '2023-04-01 05:41:11.405635'),
 ('5ad28fe4ea', 'UKJA-6302', '29c759d624f9', 'Trina L. Crowder', 'bd200ef837', 'Turkish Coffee', '8', '1', 'PAGADO', '2023-04-01 08:17:12.053002'),
@@ -191,6 +197,7 @@ INSERT INTO `rpos_pedidos` (`pedido_id`, `pedido_code`, `cliente_id`, `cliente_n
 ('af52d0022d', 'FNAB-9142', '35135b319ce3', 'Christine Moore', '2fdec9bdfb', 'Jambalaya', '9', '2', 'Pagado', '2023-04-01 05:41:11.389650'),
 ('c7e3262ad1', 'GUFC-9526', 'fe6bb69bdd29', 'Brian S. Boucher', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-01 08:15:47.626996'),
 ('cd461e888f', 'YGQJ-8391', '29c759d624f9', 'Trina L. Crowder', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-01 08:13:27.044680'),
+('d412c8be6d', 'UCFE-9213', 'be997cd5ad12', 'Abraham', '2fdec9bdfb', 'Jambalaya', '9', '2', 'PAGADO', '2023-06-19 03:36:00.380124'),
 ('ebe4cecdaa', 'DVXI-2941', '9a030bf80299', 'Orivaldo', '8dd1968370', 'Sajta', '10', '2', 'PAGADO', '2023-04-01 08:29:55.631932'),
 ('f961eedc5e', 'NASI-4592', 'b8761964a422', 'Daniel', '8dd1968370', 'Sajta', '10', '1', 'PAGADO', '2023-04-02 01:39:19.017594'),
 ('fc79a55455', 'INHG-0875', '9c7fcc067bda', 'Delbert G. Campbell', '3adfdee116', 'Enchiladas', '10', '1', 'Pagado', '2023-04-01 05:41:11.364681');
