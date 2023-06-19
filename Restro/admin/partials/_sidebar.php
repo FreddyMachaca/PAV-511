@@ -89,7 +89,7 @@ while ($admin = $res->fetch_object()) {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="hrm.php">
-              <i class="fas fa-user-tie text-primary"></i> gestion de recursos humanos
+              <i class="fas fa-user-tie text-primary"></i> gestion de personal
             </a>
           </li>
           <li class="nav-item">

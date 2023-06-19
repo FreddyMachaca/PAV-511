@@ -5,114 +5,163 @@ include('config/checklogin.php');
 include('config/code-generator.php');
 
 check_login();
-//Udpate Staff
+// Update Staff
 if (isset($_POST['UpdateStaff'])) {
-  //Prevent Posting Blank Values
-  if (empty($_POST["staff_number"]) || empty($_POST["staff_name"]) || empty($_POST['staff_email']) || empty($_POST['staff_password'])) {
-    $err = "Blank Values Not Accepted";
-  } else {
-    $staff_number = $_POST['staff_number'];
-    $staff_name = $_POST['staff_name'];
-    $staff_email = $_POST['staff_email'];
-    $staff_password = $_POST['staff_password'];
-    $update = $_GET['update'];
-
-    //Insert Captured information to a database table
-    $postQuery = "UPDATE rpos_personal SET  personal_num =?, personal_nombre =?, personal_email =?, personal_password =? WHERE personal_id =?";
-    $postStmt = $mysqli->prepare($postQuery);
-    //bind paramaters
-    $rc = $postStmt->bind_param('ssssi', $staff_number, $staff_name, $staff_email, $staff_password, $update);
-    $postStmt->execute();
-    //declare a varible which will be passed to alert function
-    if ($postStmt) {
-      $success = "Staff Updated" && header("refresh:1; url=hrm.php");
+    // Prevent Posting Blank Values
+    if (empty($_POST["staff_number"]) || empty($_POST["staff_name"]) || empty($_POST['staff_email']) || empty($_POST['staff_password']) || empty($_POST['staff_address']) || empty($_POST['staff_phone']) || empty($_POST['staff_job_title']) || empty($_POST['staff_dob']) || empty($_POST['staff_ci']) || empty($_POST['staff_hourly_rate']) || empty($_POST['staff_bank_info'])) {
+        $err = "Blank Values Not Accepted";
     } else {
-      $err = "Please Try Again Or Try Later";
+        $staff_number = $_POST['staff_number'];
+        $staff_name = $_POST['staff_name'];
+        $staff_email = $_POST['staff_email'];
+        $staff_password = $_POST['staff_password'];
+        $staff_address = $_POST['staff_address'];
+        $staff_phone = $_POST['staff_phone'];
+        $staff_job_title = $_POST['staff_job_title'];
+        $staff_dob = $_POST['staff_dob'];
+        $staff_ci = $_POST['staff_ci'];
+        $staff_hourly_rate = $_POST['staff_hourly_rate'];
+        $staff_bank_info = $_POST['staff_bank_info'];
+        $update = $_GET['update'];
+
+        // Insert Captured information to a database table
+        $postQuery = "UPDATE rpos_personal SET personal_num =?, personal_nombre =?, personal_email =?, personal_password =?, personal_direccion =?, personal_telefono =?, personal_puesto =?, personal_fecha_nacimiento =?, personal_ci =?, personal_salario_hora =?, personal_datos_bancarios =? WHERE personal_id =?";
+        $postStmt = $mysqli->prepare($postQuery);
+        // Bind parameters
+        $rc = $postStmt->bind_param('sssssssssssi', $staff_number, $staff_name, $staff_email, $staff_password, $staff_address, $staff_phone, $staff_job_title, $staff_dob, $staff_ci, $staff_hourly_rate, $staff_bank_info, $update);
+        $postStmt->execute();
+        // Declare a variable which will be passed to the alert function
+        if ($postStmt) {
+            $success = "Staff Updated" && header("refresh:1; url=hrm.php");
+        } else {
+            $err = "Please Try Again Or Try Later";
+        }
     }
-  }
 }
 require_once('partials/_head.php');
 ?>
 
 <body>
-  <!-- Sidenav -->
-  <?php
-  require_once('partials/_sidebar.php');
-  ?>
-  <!-- Main content -->
-  <div class="main-content">
+<!-- Sidenav -->
+<?php
+require_once('partials/_sidebar.php');
+?>
+<!-- Main content -->
+<div class="main-content">
     <!-- Top navbar -->
     <?php
     require_once('partials/_topnav.php');
     $update = $_GET['update'];
-    $ret = "SELECT * FROM  rpos_personal WHERE personal_id = '$update' ";
+    $ret = "SELECT * FROM rpos_personal WHERE personal_id = '$update'";
     $stmt = $mysqli->prepare($ret);
     $stmt->execute();
     $res = $stmt->get_result();
     while ($staff = $res->fetch_object()) {
     ?>
-      <!-- Header -->
-      <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
-      <span class="mask bg-gradient-dark opacity-8"></span>
+    <!-- Header -->
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header pb-8 pt-5 pt-md-8">
+        <span class="mask bg-gradient-dark opacity-8"></span>
         <div class="container-fluid">
-          <div class="header-body">
-          </div>
+            <div class="header-body">
+            </div>
         </div>
-      </div>
-      <!-- Page content -->
-      <div class="container-fluid mt--8">
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--8">
         <!-- Table -->
         <div class="row">
-          <div class="col">
-            <div class="card shadow">
-              <div class="card-header border-0">
-                <h3>Por favor llena todos los espacios</h3>
-              </div>
-              <div class="card-body">
-                <form method="POST">
-                  <div class="form-row">
-                    <div class="col-md-6">
-                      <label>Numero de personal</label>
-                      <input type="text" name="staff_number" class="form-control" value="<?php echo $staff->personal_num; ?>">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h3>Por favor, completa todos los campos</h3>
                     </div>
-                    <div class="col-md-6">
-                      <label>Nombre del personal</label>
-                      <input type="text" name="staff_name" class="form-control" value="<?php echo $staff->personal_nombre; ?>">
-                    </div>
-                  </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Numero de personal</label>
+                                    <input type="text" name="staff_number" class="form-control" value="<?php echo $staff->personal_num; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Nombre del personal</label>
+                                    <input type="text" name="staff_name" class="form-control" value="<?php echo $staff->personal_nombre; ?>">
+                                </div>
+                            </div>
 
-                  <div class="form-row">
-                    <div class="col-md-6">
-                      <label>Correo electrónico del personal</label>
-                      <input type="email" name="staff_email" class="form-control" value="<?php echo $staff->personal_email; ?>">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Correo electrónico del personal</label>
+                                    <input type="email" name="staff_email" class="form-control" value="<?php echo $staff->personal_email; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Contraseña del personal</label>
+                                    <input type="password" name="staff_password" class="form-control" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Dirección</label>
+                                    <input type="text" name="staff_address" class="form-control" value="<?php echo $staff->personal_direccion; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Número de teléfono</label>
+                                    <input type="text" name="staff_phone" class="form-control" value="<?php echo $staff->personal_telefono; ?>">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Puesto de trabajo</label>
+                                    <input type="text" name="staff_job_title" class="form-control" value="<?php echo $staff->personal_puesto; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Fecha de nacimiento</label>
+                                    <input type="text" name="staff_dob" class="form-control" value="<?php echo $staff->personal_fecha_nacimiento; ?>">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Cédula de Identidad (CI)</label>
+                                    <input type="text" name="staff_ci" class="form-control" value="<?php echo $staff->personal_ci; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Salario/hora</label>
+                                    <input type="text" name="staff_hourly_rate" class="form-control" value="<?php echo $staff->personal_salario_hora; ?>">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Datos Cuenta bancaria</label>
+                                    <input type="text" name="staff_bank_info" class="form-control" value="<?php echo $staff->personal_datos_bancarios; ?>">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <input type="submit" name="UpdateStaff" value="Actualizar Personal" class="btn btn-success" value="">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-6">
-                      <label>Contraseña del personal</label>
-                      <input type="password" name="staff_password" class="form-control" value="">
-                    </div>
-                  </div>
-                  <br>
-                  <div class="form-row">
-                    <div class="col-md-6">
-                      <input type="submit" name="UpdateStaff" value="Actualizar Personal" class="btn btn-success" value="">
-                    </div>
-                  </div>
-                </form>
-              </div>
+                </div>
             </div>
-          </div>
         </div>
         <!-- Footer -->
-      <?php
-      require_once('partials/_footer.php');
-    }
-      ?>
-      </div>
-  </div>
-  <!-- Argon Scripts -->
-  <?php
-  require_once('partials/_scripts.php');
-  ?>
+        <?php
+        require_once('partials/_footer.php');
+        ?>
+    </div>
+</div>
+<?php
+}
+?>
+<!-- Argon Scripts -->
+<?php
+require_once('partials/_scripts.php');
+?>
 </body>
 
 </html>
