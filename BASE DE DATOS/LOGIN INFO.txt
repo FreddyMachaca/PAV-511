@@ -9,7 +9,7 @@ Password: admin
 
 --Cajero Login--
 
-Email	: zeballos6@gmail.com
+Email	: zeballos@gmail.com
 Password: zeballos 
 
 
