@@ -22,19 +22,19 @@ if (isset($_POST['pay'])) {
         $order_status = $_GET['order_status'];
 
         //Insert Captured information to a database table
-        $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
-        $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
+        $postQuery = "INSERT INTO rpos_pagos (pago_id, pago_code, pedido_code, cliente_id, pago_monto, pago_metodo) VALUES(?,?,?,?,?,?)";
+        $upQry = "UPDATE rpos_pedidos SET pedido_status =? WHERE pedido_code =?";
 
         $postStmt = $mysqli->prepare($postQuery);
         $upStmt = $mysqli->prepare($upQry);
-        //bind paramaters
+        //bind parameters
 
         $rc = $postStmt->bind_param('ssssss', $pay_id, $pay_code, $order_code, $customer_id, $pay_amt, $pay_method);
         $rc = $upStmt->bind_param('ss', $order_status, $order_code);
 
         $postStmt->execute();
         $upStmt->execute();
-        //declare a varible which will be passed to alert function
+        //declare a variable which will be passed to alert function
         if ($upStmt && $postStmt) {
             $success = "Paid" && header("refresh:1; url=receipts.php");
         } else {
@@ -56,16 +56,16 @@ require_once('partials/_sidebar.php');
     <?php
     require_once('partials/_topnav.php');
     $order_code = $_GET['order_code'];
-    $ret = "SELECT * FROM  rpos_orders WHERE order_code ='$order_code' ";
+    $ret = "SELECT * FROM  rpos_pedidos WHERE pedido_code ='$order_code' ";
     $stmt = $mysqli->prepare($ret);
     $stmt->execute();
     $res = $stmt->get_result();
     while ($order = $res->fetch_object()) {
-    $total = ($order->prod_price * $order->prod_qty);
+    $total = ($order->prod_precio * $order->prod_cant);
     ?>
 
     <!-- Header -->
-    <div style="background-image: url(../admin/assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
         <span class="mask bg-gradient-dark opacity-8"></span>
         <div class="container-fluid">
             <div class="header-body">
@@ -82,7 +82,7 @@ require_once('partials/_sidebar.php');
                         <h3>Por favor llena todos los espacios</h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST"  enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label>ID de pago</label>
@@ -126,7 +126,8 @@ require_once('partials/_sidebar.php');
 </div>
     <!-- Argon Scripts -->
 <?php
-require_once('partials/_scripts.php'); }
+require_once('partials/_scripts.php');
 ?>
+<?php } ?>
 </body>
 </html>
