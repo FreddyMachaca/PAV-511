@@ -120,25 +120,25 @@ require_once('partials/_analytics.php');
                 <tbody>
                   <?php
                   $customer_id = $_SESSION['customer_id'];
-                  $ret = "SELECT * FROM  rpos_orders WHERE customer_id = '$customer_id' ORDER BY `rpos_orders`.`created_at` DESC LIMIT 10 ";
+                  $ret = "SELECT * FROM  rpos_pedidos WHERE cliente_id = '$customer_id' ORDER BY `rpos_pedidos`.`created_at` DESC LIMIT 10 ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
                   while ($order = $res->fetch_object()) {
-                    $total = ($order->prod_price * $order->prod_qty);
+                    $total = ($order->prod_precio * $order->prod_cant);
 
                   ?>
                     <tr>
-                      <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
-                      <td><?php echo $order->customer_name; ?></td>
-                      <td class="text-success"><?php echo $order->prod_name; ?></td>
-                      <td><?php echo $order->prod_price; ?>Bs</td>
-                      <td class="text-success"><?php echo $order->prod_qty; ?></td>
+                      <th class="text-success" scope="row"><?php echo $order->pedido_code; ?></th>
+                      <td><?php echo $order->cliente_nombre; ?></td>
+                      <td class="text-success"><?php echo $order->prod_nombre; ?></td>
+                      <td><?php echo $order->prod_precio; ?>Bs</td>
+                      <td class="text-success"><?php echo $order->prod_cant; ?></td>
                       <td><?php echo $total; ?>Bs</td>
-                      <td><?php if ($order->order_status == '') {
+                      <td><?php if ($order->pedido_status == '') {
                             echo "<span class='badge badge-danger'>No Pagado</span>";
                           } else {
-                            echo "<span class='badge badge-success'>$order->order_status</span>";
+                            echo "<span class='badge badge-success'>$order->pedido_status</span>";
                           } ?></td>
                       <td class="text-success"><?php echo date('d/M/Y g:i', strtotime($order->created_at)); ?></td>
                     </tr>
@@ -175,7 +175,7 @@ require_once('partials/_analytics.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM   rpos_payments WHERE customer_id ='$customer_id'   ORDER BY `rpos_payments`.`created_at` DESC LIMIT 10 ";
+                  $ret = "SELECT * FROM   rpos_pagos WHERE cliente_id ='$customer_id'   ORDER BY `rpos_pagos`.`created_at` DESC LIMIT 10 ";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
@@ -183,13 +183,13 @@ require_once('partials/_analytics.php');
                   ?>
                     <tr>
                       <th class="text-success" scope="row">
-                        <?php echo $payment->pay_code; ?>
+                        <?php echo $payment->pago_code; ?>
                       </th>
                       <td>
-                        <?php echo $payment->pay_amt; ?>Bs
+                        <?php echo $payment->pago_monto; ?>Bs
                       </td>
                       <td class='text-success'>
-                        <?php echo $payment->order_code; ?>
+                        <?php echo $payment->pedido_code; ?>
                       </td>
                     </tr>
                   <?php } ?>

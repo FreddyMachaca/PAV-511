@@ -20,7 +20,7 @@ if (isset($_POST['make'])) {
         $prod_qty = $_POST['prod_qty'];
 
         //Insert Captured information to a database table
-        $postQuery = "INSERT INTO rpos_orders (prod_qty, order_id, order_code, customer_id, customer_name, prod_id, prod_name, prod_price) VALUES(?,?,?,?,?,?,?,?)";
+        $postQuery = "INSERT INTO rpos_pedidos (prod_cant, pedido_id, pedido_code, cliente_id, cliente_nombre, prod_id, prod_nombre, prod_precio) VALUES(?,?,?,?,?,?,?,?)";
         $postStmt = $mysqli->prepare($postQuery);
         //bind paramaters
         $rc = $postStmt->bind_param('ssssssss', $prod_qty, $order_id, $order_code, $customer_id, $customer_name, $prod_id, $prod_name, $prod_price);
@@ -73,13 +73,13 @@ require_once('partials/_head.php');
                                         <?php
                                         //Load All Customers
                                         $customer_id = $_SESSION['customer_id'];
-                                        $ret = "SELECT * FROM  rpos_customers WHERE customer_id = '$customer_id' ";
+                                        $ret = "SELECT * FROM  rpos_clientes WHERE cliente_id = '$customer_id' ";
                                         $stmt = $mysqli->prepare($ret);
                                         $stmt->execute();
                                         $res = $stmt->get_result();
                                         while ($cust = $res->fetch_object()) {
                                         ?>
-                                            <input class="form-control" readonly name="customer_name" value="<?php echo $cust->customer_name; ?>">
+                                            <input class="form-control" readonly name="customer_name" value="<?php echo $cust->cliente_nombre; ?>">
                                         <?php } ?>
                                         <input type="hidden" name="order_id" value="<?php echo $orderid; ?>" class="form-control">
                                     </div>
@@ -91,7 +91,7 @@ require_once('partials/_head.php');
                                 <hr>
                                 <?php
                                 $prod_id = $_GET['prod_id'];
-                                $ret = "SELECT * FROM  rpos_products WHERE prod_id = '$prod_id'";
+                                $ret = "SELECT * FROM  rpos_productos WHERE prod_id = '$prod_id'";
                                 $stmt = $mysqli->prepare($ret);
                                 $stmt->execute();
                                 $res = $stmt->get_result();
@@ -100,7 +100,7 @@ require_once('partials/_head.php');
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <label>Precio del producto (Bs)</label>
-                                            <input type="text" readonly name="prod_price" value="<?php echo $prod->prod_price; ?>Bs" class="form-control">
+                                            <input type="text" readonly name="prod_price" value="<?php echo $prod->prod_precio; ?>Bs" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Cantidad de producto</label>

@@ -48,7 +48,7 @@ require_once('partials/_head.php');
                                 <tbody>
                                     <?php
                                     $customer_id = $_SESSION['customer_id'];
-                                    $ret = "SELECT * FROM  rpos_payments WHERE customer_id ='$customer_id' ORDER BY `created_at` DESC ";
+                                    $ret = "SELECT * FROM  rpos_pagos WHERE cliente_id ='$customer_id' ORDER BY `created_at` DESC ";
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
                                     $res = $stmt->get_result();
@@ -56,16 +56,16 @@ require_once('partials/_head.php');
                                     ?>
                                         <tr>
                                             <th class="text-success" scope="row">
-                                                <?php echo $payment->pay_code; ?>
+                                                <?php echo $payment->pago_code; ?>
                                             </th>
                                             <th scope="row">
-                                                <?php echo $payment->pay_method; ?>
+                                                <?php echo $payment->pago_metodo; ?>
                                             </th>
                                             <td class="text-success">
-                                                <?php echo $payment->order_code; ?>
+                                                <?php echo $payment->pago_code; ?>
                                             </td>
                                             <td>
-                                                <?php echo $payment->pay_amt; ?>Bs
+                                                <?php echo $payment->pago_monto; ?>Bs
                                             </td>
                                             <td class="text-success">
                                                 <?php echo date('d/M/Y g:i', strtotime($payment->created_at)) ?>

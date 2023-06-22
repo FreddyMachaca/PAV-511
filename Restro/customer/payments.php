@@ -6,7 +6,7 @@ check_login();
 //Cancel Order
 if (isset($_GET['cancel'])) {
     $id = $_GET['cancel'];
-    $adn = "DELETE FROM  rpos_orders  WHERE  order_id = ?";
+    $adn = "DELETE FROM  rpos_pedidos  WHERE  pedido_id = ?";
     $stmt = $mysqli->prepare($adn);
     $stmt->bind_param('s', $id);
     $stmt->execute();
@@ -66,29 +66,29 @@ require_once('partials/_head.php');
                                 <tbody>
                                     <?php
                                     $customer_id = $_SESSION['customer_id'];
-                                    $ret = "SELECT * FROM  rpos_orders WHERE order_status ='' AND customer_id = '$customer_id'  ORDER BY `rpos_orders`.`created_at` DESC  ";
+                                    $ret = "SELECT * FROM  rpos_pedidos WHERE pedido_status ='' AND cliente_id = '$customer_id'  ORDER BY `rpos_pedidos`.`created_at` DESC  ";
                                     $stmt = $mysqli->prepare($ret);
                                     $stmt->execute();
                                     $res = $stmt->get_result();
                                     while ($order = $res->fetch_object()) {
-                                        $total = ($order->prod_price * $order->prod_qty);
+                                        $total = ($order->prod_precio * $order->prod_cant);
 
                                     ?>
                                         <tr>
-                                            <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
-                                            <td><?php echo $order->customer_name; ?></td>
-                                            <td><?php echo $order->prod_name; ?></td>
+                                            <th class="text-success" scope="row"><?php echo $order->pedido_code; ?></th>
+                                            <td><?php echo $order->cliente_nombre; ?></td>
+                                            <td><?php echo $order->prod_nombre; ?></td>
                                             <td><?php echo $total; ?>Bs</td>
                                             <td><?php echo date('d/M/Y g:i', strtotime($order->created_at)); ?></td>
                                             <td>
-                                                <a href="pay_order.php?order_code=<?php echo $order->order_code;?>&customer_id=<?php echo $order->customer_id;?>&order_status=PAGADO">
+                                                <a href="pay_order.php?order_code=<?php echo $order->pedido_code;?>&customer_id=<?php echo $order->cliente_id;?>&order_status=PAGADO">
                                                     <button class="btn btn-sm btn-success">
                                                         <i class="fas fa-handshake"></i>
                                                         Orden de pago
                                                     </button>
                                                 </a>
 
-                                                <a href="payments.php?cancel=<?php echo $order->order_id; ?>">
+                                                <a href="payments.php?cancel=<?php echo $order->pedido_id; ?>">
                                                     <button class="btn btn-sm btn-danger">
                                                         <i class="fas fa-window-close"></i>
                                                         Cancelar orden
