@@ -1,0 +1,21 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Un tono más oscuro para el fondo */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #f9d423; /* Un color llamativo para el título principal */
+    font-size: 2.5rem; /* Aumenté el tamaño del título principal */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 3px; /* Espaciado entre letras */
+    padding: 10px;
+
+}
